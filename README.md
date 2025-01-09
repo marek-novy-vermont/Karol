@@ -1,90 +1,6 @@
-# bolt.diy (Previously oTToDev)
+# Karol fork of bolt.diy (Previously oTToDev)
 [![bolt.diy: AI-Powered Full-Stack Web Development in the Browser](./public/social_preview_index.jpg)](https://bolt.diy)
 
-Welcome to bolt.diy, the official open source version of Bolt.new (previously known as oTToDev and bolt.new ANY LLM), which allows you to choose the LLM that you use for each prompt! Currently, you can use OpenAI, Anthropic, Ollama, OpenRouter, Gemini, LMStudio, Mistral, xAI, HuggingFace, DeepSeek, or Groq models - and it is easily extended to use any other model supported by the Vercel AI SDK! See the instructions below for running this locally and extending it to include more models.
-
-Check the [bolt.diy Docs](https://stackblitz-labs.github.io/bolt.diy/) for more information. 
-
-We have also launched an experimental agent called the "bolt.diy Expert" that can answer common questions about bolt.diy. Find it here on the [oTTomator Live Agent Studio](https://studio.ottomator.ai/).
-
-bolt.diy was originally started by [Cole Medin](https://www.youtube.com/@ColeMedin) but has quickly grown into a massive community effort to build the BEST open source AI coding assistant!
-
-## Table of Contents
-
-- [Join the Community](#join-the-community)
-- [Requested Additions](#requested-additions)
-- [Features](#features)
-- [Setup](#setup)
-- [Run the Application](#run-the-application)
-- [Available Scripts](#available-scripts)
-- [Contributing](#contributing)
-- [Roadmap](#roadmap)
-- [FAQ](#faq)
-
-## Join the community
-
-[Join the bolt.diy community here, in the thinktank on ottomator.ai!](https://thinktank.ottomator.ai)
-
-
-## Requested Additions
-
-- ✅ OpenRouter Integration (@coleam00)
-- ✅ Gemini Integration (@jonathands)
-- ✅ Autogenerate Ollama models from what is downloaded (@yunatamos)
-- ✅ Filter models by provider (@jasonm23)
-- ✅ Download project as ZIP (@fabwaseem)
-- ✅ Improvements to the main bolt.new prompt in `app\lib\.server\llm\prompts.ts` (@kofi-bhr)
-- ✅ DeepSeek API Integration (@zenith110)
-- ✅ Mistral API Integration (@ArulGandhi)
-- ✅ "Open AI Like" API Integration (@ZerxZ)
-- ✅ Ability to sync files (one way sync) to local folder (@muzafferkadir)
-- ✅ Containerize the application with Docker for easy installation (@aaronbolton)
-- ✅ Publish projects directly to GitHub (@goncaloalves)
-- ✅ Ability to enter API keys in the UI (@ali00209)
-- ✅ xAI Grok Beta Integration (@milutinke)
-- ✅ LM Studio Integration (@karrot0)
-- ✅ HuggingFace Integration (@ahsan3219)
-- ✅ Bolt terminal to see the output of LLM run commands (@thecodacus)
-- ✅ Streaming of code output (@thecodacus)
-- ✅ Ability to revert code to earlier version (@wonderwhy-er)
-- ✅ Cohere Integration (@hasanraiyan)
-- ✅ Dynamic model max token length (@hasanraiyan)
-- ✅ Better prompt enhancing (@SujalXplores)
-- ✅ Prompt caching (@SujalXplores)
-- ✅ Load local projects into the app (@wonderwhy-er)
-- ✅ Together Integration (@mouimet-infinisoft)
-- ✅ Mobile friendly (@qwikode)
-- ✅ Better prompt enhancing (@SujalXplores)
-- ✅ Attach images to prompts (@atrokhym)
-- ✅ Added Git Clone button (@thecodacus)
-- ✅ Git Import from url (@thecodacus)
-- ✅ PromptLibrary to have different variations of prompts for different use cases (@thecodacus)
-- ✅ Detect package.json and commands to auto install & run preview for folder and git import (@wonderwhy-er)
-- ✅ Selection tool to target changes visually (@emcconnell)
-- ✅ Detect terminal Errors and ask bolt to fix it (@thecodacus)
-- ✅ Detect preview Errors and ask bolt to fix it (@wonderwhy-er)
-- ✅ Add Starter Template Options (@thecodacus)
-- ⬜ **HIGH PRIORITY** - Prevent bolt from rewriting files as often (file locking and diffs)
-- ⬜ **HIGH PRIORITY** - Better prompting for smaller LLMs (code window sometimes doesn't start)
-- ⬜ **HIGH PRIORITY** - Run agents in the backend as opposed to a single model call
-- ⬜ Deploy directly to Vercel/Netlify/other similar platforms
-- ⬜ Have LLM plan the project in a MD file for better results/transparency
-- ⬜ VSCode Integration with git-like confirmations
-- ⬜ Upload documents for knowledge - UI design templates, a code base to reference coding style, etc.
-- ⬜ Voice prompting
-- ⬜ Azure Open AI API Integration
-- ✅ Perplexity Integration (@meetpateltech)
-- ⬜ Vertex AI Integration
-
-## Features
-
-- **AI-powered full-stack web development** directly in your browser.
-- **Support for multiple LLMs** with an extensible architecture to integrate additional models.
-- **Attach images to prompts** for better contextual understanding.
-- **Integrated terminal** to view output of LLM-run commands.
-- **Revert code to earlier versions** for easier debugging and quicker changes.
-- **Download projects as ZIP** for easy portability.
-- **Integration-ready Docker support** for a hassle-free setup.
 
 ## Setup 
 
@@ -172,40 +88,6 @@ This option requires some familiarity with Docker but provides a more isolated e
    docker-compose --profile development up
    ```
 
-
-
-
-## Configuring API Keys and Providers
-
-### Adding Your API Keys
-
-Setting up your API keys in Bolt.DIY is straightforward:
-
-1. Open the home page (main interface)
-2. Select your desired provider from the dropdown menu
-3. Click the pencil (edit) icon
-4. Enter your API key in the secure input field
-
-![API Key Configuration Interface](./docs/images/api-key-ui-section.png)
-
-### Configuring Custom Base URLs
-
-For providers that support custom base URLs (such as Ollama or LM Studio), follow these steps:
-
-1. Click the settings icon in the sidebar to open the settings menu
-   ![Settings Button Location](./docs/images/bolt-settings-button.png)
-
-2. Navigate to the "Providers" tab
-3. Search for your provider using the search bar
-4. Enter your custom base URL in the designated field
-   ![Provider Base URL Configuration](./docs/images/provider-base-url.png)
-
-> **Note**: Custom base URLs are particularly useful when running local instances of AI models or using custom API endpoints.
-
-### Supported Providers
-- Ollama
-- LM Studio
-- OpenAILike
 
 ## Setup Using Git (For Developers only)
 
@@ -307,20 +189,3 @@ Remember to always commit your local changes or stash them before pulling update
 - **`pnpm run deploy`**: Deploys the project to Cloudflare Pages.
 - **`pnpm run lint:fix`**: Automatically fixes linting issues.
 
----
-
-## Contributing
-
-We welcome contributions! Check out our [Contributing Guide](CONTRIBUTING.md) to get started.
-
----
-
-## Roadmap
-
-Explore upcoming features and priorities on our [Roadmap](https://roadmap.sh/r/ottodev-roadmap-2ovzo).
-
----
-
-## FAQ
-
-For answers to common questions, issues, and to see a list of recommended models, visit our [FAQ Page](FAQ.md).
