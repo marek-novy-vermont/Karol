@@ -7,8 +7,8 @@ import BackgroundRays from '~/components/ui/BackgroundRays';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Karol all mighty' }, 
-    { name: 'description', content: 'Talk with Karči, an AI assistant from StackBlitz' }
+    { title: 'Karol all mightyr' },
+    { name: 'description', content: 'Talk with Karči, an AI assistant from StackBlitz' },
   ];
 };
 
