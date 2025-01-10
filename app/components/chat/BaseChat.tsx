@@ -520,7 +520,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         minHeight: TEXTAREA_MIN_HEIGHT,
                         maxHeight: TEXTAREA_MAX_HEIGHT,
                       }}
-                      placeholder="Sem na=píš čo má Karči zrobiť..."
+                      placeholder="Sem napíš čo má Karči zrobiť..."
                       translate="no"
                     />
                     <ClientOnly>
