@@ -146,4 +146,12 @@ export const STARTER_TEMPLATES: Template[] = [
     tags: ['angular', 'typescript', 'frontend', 'spa'],
     icon: 'i-bolt:angular',
   },
+  {
+    name: 'bolt-laravel-sail',
+    label: 'Laravel Sail',
+    description: 'Laravel starter template with Docker-based development environment using Laravel Sail',
+    githubRepo: 'thecodacus/bolt-laravel-sail-template',
+    tags: ['laravel', 'php', 'sail', 'docker', 'fullstack'],
+    icon: 'i-bolt:laravel',
+  },
 ];

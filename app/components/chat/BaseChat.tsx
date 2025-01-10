@@ -327,7 +327,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                   Bajajo Bajajo!
                 </h1>
                 <p className="text-md lg:text-xl mb-2 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
-                  Zapni model, skontroluj nastavenia šefko...
+                  Jó napod! Zapni model, skontroluj nastavenia šefko...
                 </p>
               </div>
             )}
@@ -387,10 +387,10 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         gradientUnits="userSpaceOnUse"
                         gradientTransform="rotate(-45)"
                       >
-                        <stop offset="0%" stopColor="#b44aff" stopOpacity="0%"></stop>
-                        <stop offset="40%" stopColor="#b44aff" stopOpacity="80%"></stop>
-                        <stop offset="50%" stopColor="#b44aff" stopOpacity="80%"></stop>
-                        <stop offset="100%" stopColor="#b44aff" stopOpacity="0%"></stop>
+                        <stop offset="0%" stopColor="rgba(61, 116, 35, 1)" stopOpacity="0%"></stop>
+                        <stop offset="40%" stopColor="rgba(61, 116, 35, 1)" stopOpacity="80%"></stop>
+                        <stop offset="50%" stopColor="rgba(61, 116, 35, 1)" stopOpacity="80%"></stop>
+                        <stop offset="100%" stopColor="rgba(61, 116, 35, 1)" stopOpacity="0%"></stop>
                       </linearGradient>
                       <linearGradient id="shine-gradient">
                         <stop offset="0%" stopColor="white" stopOpacity="0%"></stop>
@@ -600,7 +600,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
             </div>
             <div className="flex flex-col justify-center gap-5">
               {!chatStarted && (
-                <div className="flex justify-center gap-2">
+                <div className="flex justify-center gap-2 mb-14">
                   {ImportButtons(importChat)}
                   <GitCloneButton importChat={importChat} />
                 </div>
