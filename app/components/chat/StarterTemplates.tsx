@@ -25,7 +25,7 @@ const FrameworkLink: React.FC<FrameworkLinkProps> = ({ template }) => (
       className="items-center justify-center"
     >
       <div
-        className={`inline-block ${template.icon} w-14 h-14 text-4xl transition-theme grayscale opacity-25 hover:grayscale-0 hover:opacity-75 transition-all duration-500`}
+        className={`inline-block ${template.icon} w-10 h-10 text-4xl transition-theme grayscale opacity-25 hover:grayscale-0 hover:opacity-75 transition-all duration-500`}
       />
     </a>
   </WithTooltip>

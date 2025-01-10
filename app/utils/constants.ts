@@ -154,4 +154,20 @@ export const STARTER_TEMPLATES: Template[] = [
     tags: ['laravel', 'php', 'sail', 'docker', 'fullstack'],
     icon: 'i-bolt:laravel',
   },
+  {
+    name: 'bolt-bootstrap',
+    label: 'Bootstrap Starter',
+    description: 'Modern Bootstrap 5 starter template with Sass and best practices configuration',
+    githubRepo: 'thecodacus/bolt-bootstrap-template',
+    tags: ['bootstrap', 'sass', 'responsive', 'ui'],
+    icon: 'i-bolt:bootstrap',
+  },
+  {
+    name: 'bolt-shadcn-vue',
+    label: 'Vue + shadcn/ui',
+    description: 'Vue.js starter template with shadcn/ui components and styling system',
+    githubRepo: 'thecodacus/bolt-shadcn-vue-template',
+    tags: ['vue', 'shadcn', 'typescript', 'tailwind'],
+    icon: 'i-bolt:shadcn',
+  },
 ];
