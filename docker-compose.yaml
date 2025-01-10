@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
       target: bolt-ai-production
     ports:
-      - "5006:5173"
+      - "5173:5173"
     env_file: ".env.local"
     environment:
       - NODE_ENV=production
@@ -64,6 +64,6 @@ services:
         consistency: cached
       - /app/node_modules
     ports:
-      - "5006:5173"
+      - "5173:5173"
     command: pnpm run dev --host 0.0.0.0
     profiles: ["development", "default"]
