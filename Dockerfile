@@ -80,4 +80,6 @@ ENV GROQ_API_KEY=${GROQ_API_KEY} \
     DEFAULT_NUM_CTX=${DEFAULT_NUM_CTX}
 
 RUN mkdir -p ${WORKDIR}/run
-CMD pnpm run dev --host
+CMD  ["pnpm run dev --host","karol"]
+
+
