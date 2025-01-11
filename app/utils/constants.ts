@@ -170,4 +170,12 @@ export const STARTER_TEMPLATES: Template[] = [
     tags: ['vue', 'shadcn', 'typescript', 'tailwind'],
     icon: 'i-bolt:shadcn',
   },
+  {
+    name: 'bolt-laragon',
+    label: 'Laragon Stack',
+    description: 'Full PHP development environment with Laragon, MySQL, Redis, and Apache/Nginx',
+    githubRepo: 'thecodacus/bolt-laragon-template',
+    tags: ['laragon', 'php', 'mysql', 'apache', 'nginx', 'development'],
+    icon: 'i-bolt:laragon',
+  },
 ];

@@ -10,7 +10,7 @@ import { useEffect, useState } from 'react';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: 'Karol all mightyr' },
+    { title: 'Karol - All Mighty Boogity, Boogity, Boogity' },
     { name: 'description', content: 'Talk with Karči, an AI assistant from StackBlitz' },
   ];
 };
