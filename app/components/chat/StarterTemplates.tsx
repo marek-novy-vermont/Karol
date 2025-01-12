@@ -14,8 +14,8 @@ const FrameworkLink: React.FC<FrameworkLinkProps> = ({ template }) => (
         <div className="font-bold dark:text-[#052E16] text-[#DCFCE7]">{template.label}</div>
       </div>
     }
-    className="!bg-[#3D7423]"
-    arrowClassName="!fill-[#3D7423]"
+    className="dark:!bg-[#ffffff] !bg-[#171717]"
+    arrowClassName=" dark:!fill-[#ffffff] !fill-[#171717]"
     sideOffset={15}
   >
     <a
@@ -25,7 +25,7 @@ const FrameworkLink: React.FC<FrameworkLinkProps> = ({ template }) => (
       className="items-center justify-center"
     >
       <div
-        className={`inline-block ${template.icon} w-10 h-10 text-4xl transition-theme grayscale opacity-25 hover:grayscale-0 hover:opacity-75 transition-all duration-500`}
+        className={`inline-block ${template.icon} w-10 h-10 text-4xl transition-theme grayscale opacity-25 hover:grayscale-0 hover:opacity-100 transition-all duration-250`}
       />
     </a>
   </WithTooltip>

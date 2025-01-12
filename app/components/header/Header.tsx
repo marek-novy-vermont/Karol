@@ -19,7 +19,7 @@ export function Header() {
         <img
           src="/icons/sidebar.svg"
           alt="sidebar"
-          className="w-7 h-7 me-1 opacity-10 hover:opacity-100 transition-opacity duration-300 ease-in-out dark:invert"
+          className="w-7 h-7 me-2 transition-opacity duration-300 ease-in-out dark:invert"
         />
         <a href="/" className="text-2xl font-semibold text-accent flex items-center ">
           {/* <span className="i-bolt:logo-text?mask w-[46px] inline-block" /> */}
