@@ -31,6 +31,7 @@ import StarterTemplates from './StarterTemplates';
 import type { ActionAlert } from '~/types/actions';
 import ChatAlert from './ChatAlert';
 import { LLMManager } from '~/lib/modules/llm/manager';
+import { FloatingLights } from '~/components/ui/FloatingLights';
 
 const GREETINGS = ['Bajajo Bajajo!', 'Jó napod! Počujeme?', 'Chským?', 'Si Zabeu!'];
 
@@ -328,6 +329,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
         className={classNames(styles.BaseChat, 'relative flex h-full w-full overflow-hidden')}
         data-chat-visible={showChat}
       >
+        <FloatingLights />
         <ClientOnly>{() => <Menu />}</ClientOnly>
         <div ref={scrollRef} className="flex flex-col lg:flex-row overflow-y-auto w-full h-full">
           <div className={classNames(styles.Chat, 'flex flex-col flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
@@ -345,7 +347,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                   {currentGreeting}
                 </h1>
                 <p className="text-md lg:text-xl mb-2 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
-                  Zapni model, skontroluj nastavenia šefko...
+                  ... Zapnutý model? ... LLM Engine? ... API klúč?
                 </p>
               </div>
             )}
