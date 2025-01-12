@@ -1,3 +1,5 @@
+@use "sass:list";
+
 .lightsContainer {
   position: fixed;
   inset: 0;
@@ -35,8 +37,8 @@ $left-positions: (0%, 15%, -15%, -34%, -57%, -81%, 37%, 62%, 85%);
 
 @for $i from 1 through 9 {
   .x#{$i} {
-    animation: floatUp nth($animation-durations, $i) infinite linear;
-    transform: scale(nth($scales, $i));
-    left: nth($left-positions, $i);
+    animation: floatUp list.nth($animation-durations, $i) infinite linear;
+    transform: scale(list.nth($scales, $i));
+    left: list.nth($left-positions, $i);
   }
 } 

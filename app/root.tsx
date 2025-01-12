@@ -6,6 +6,7 @@ import { themeStore } from './lib/stores/theme';
 import { stripIndents } from './utils/stripIndent';
 import { createHead } from 'remix-island';
 import { useEffect } from 'react';
+import { registerServiceWorker } from './utils/registerSW';
 
 import reactToastifyStyles from 'react-toastify/dist/ReactToastify.css?url';
 import globalStyles from './styles/index.scss?url';
@@ -18,6 +19,14 @@ export const links: LinksFunction = () => [
     rel: 'icon',
     href: '/favicon.svg',
     type: 'image/svg+xml',
+  },
+  {
+    rel: 'manifest',
+    href: '/manifest.json',
+  },
+  {
+    rel: 'apple-touch-icon',
+    href: '/apple-touch-icon.png',
   },
   { rel: 'stylesheet', href: reactToastifyStyles },
   { rel: 'stylesheet', href: tailwindReset },
@@ -90,6 +99,10 @@ export default function App() {
       userAgent: navigator.userAgent,
       timestamp: new Date().toISOString(),
     });
+  }, []);
+
+  useEffect(() => {
+    registerServiceWorker();
   }, []);
 
   return (

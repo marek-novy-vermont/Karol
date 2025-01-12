@@ -339,7 +339,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 className="mt-[16vh] max-w-chat mx-auto text-center px-4 lg:px-0 flex flex-col items-center"
               >
                 <img
-                  src="public/bigfella.svg"
+                  src="/bigfella.svg"
                   alt="Big Fella"
                   className="w-36 h-36 lg:w-56 lg:h-56 mx-auto animate-fade-in mb-4"
                 />
