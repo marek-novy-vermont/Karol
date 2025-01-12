@@ -1,4 +1,5 @@
 import { format, isAfter, isThisWeek, isThisYear, isToday, isYesterday, subDays } from 'date-fns';
+import { sk } from 'date-fns/locale';
 import type { ChatHistoryItem } from '~/lib/persistence';
 
 type Bin = { category: string; items: ChatHistoryItem[] };
@@ -31,29 +32,29 @@ export function binDates(_list: ChatHistoryItem[]) {
 
 function dateCategory(date: Date) {
   if (isToday(date)) {
-    return 'Today';
+    return 'Dnes';
   }
 
   if (isYesterday(date)) {
-    return 'Yesterday';
+    return 'Včera';
   }
 
   if (isThisWeek(date)) {
-    // e.g., "Monday"
-    return format(date, 'eeee');
+    // e.g., "Pondelok"
+    return format(date, 'eeee', { locale: sk });
   }
 
   const thirtyDaysAgo = subDays(new Date(), 30);
 
   if (isAfter(date, thirtyDaysAgo)) {
-    return 'Last 30 Days';
+    return 'Posledných 30 dní';
   }
 
   if (isThisYear(date)) {
-    // e.g., "July"
-    return format(date, 'MMMM');
+    // e.g., "Júl"
+    return format(date, 'MMMM', { locale: sk });
   }
 
-  // e.g., "July 2023"
-  return format(date, 'MMMM yyyy');
+  // e.g., "Júl 2023"
+  return format(date, 'MMMM yyyy', { locale: sk });
 }

@@ -6,13 +6,13 @@ services:
       dockerfile: Dockerfile
       target: bolt-ai-production
     ports:
-      - "5173:5173"
+      - "5175:5175"
     env_file: ".env.local"
     environment:
       - NODE_ENV=production
       - COMPOSE_PROFILES=production
       # No strictly needed but serving as hints for Coolify
-      - PORT=5173
+      - PORT=5175
       - GROQ_API_KEY=${GROQ_API_KEY}
       - HuggingFace_API_KEY=${HuggingFace_API_KEY}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
@@ -39,10 +39,10 @@ services:
       - NODE_ENV=development
       - VITE_HMR_PROTOCOL=ws
       - VITE_HMR_HOST=localhost
-      - VITE_HMR_PORT=5173
+      - VITE_HMR_PORT=5175
       - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true
-      - PORT=5173
+      - PORT=5175
       - GROQ_API_KEY=${GROQ_API_KEY}
       - HuggingFace_API_KEY=${HuggingFace_API_KEY}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
@@ -64,6 +64,6 @@ services:
         consistency: cached
       - /app/node_modules
     ports:
-      - "5173:5173"
+      - "5175:5175"
     command: pnpm run dev --host 0.0.0.0
     profiles: ["development", "default"]

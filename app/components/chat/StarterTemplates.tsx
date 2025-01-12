@@ -14,8 +14,8 @@ const FrameworkLink: React.FC<FrameworkLinkProps> = ({ template }) => (
         <div className="font-bold dark:text-[#052E16] text-[#DCFCE7]">{template.label}</div>
       </div>
     }
-    className="!bg-[#22C55E]"
-    arrowClassName="!fill-[#22C55E]"
+    className="!bg-[#3D7423]"
+    arrowClassName="!fill-[#3D7423]"
     sideOffset={15}
   >
     <a
@@ -34,7 +34,7 @@ const FrameworkLink: React.FC<FrameworkLinkProps> = ({ template }) => (
 const StarterTemplates: React.FC = () => {
   return (
     <div className="flex flex-col items-center gap-4">
-      <span className="text-sm text-gray-500">Alebo začneme nový projekt z boilerplate</span>
+      <span className="text-sm text-gray-500">Alebo začnite nový projekt zo šablóny</span>
       <div className="flex justify-center">
         <div className="flex flex-wrap items-center justify-center gap-4">
           {STARTER_TEMPLATES.map((template) => (

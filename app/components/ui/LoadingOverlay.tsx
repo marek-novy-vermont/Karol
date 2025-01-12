@@ -1,4 +1,4 @@
-export const LoadingOverlay = ({ message = 'Loading...' }) => {
+export const LoadingOverlay = ({ message = 'Načítavam...' }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/80 z-50 backdrop-blur-sm">
       {/* Loading content */}

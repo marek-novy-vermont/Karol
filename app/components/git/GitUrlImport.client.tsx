@@ -126,7 +126,7 @@ ${file.content}
       {() => (
         <>
           <Chat />
-          {loading && <LoadingOverlay message="Please wait while we clone the repository..." />}
+          {loading && <LoadingOverlay message="Daj kave ☕️ alebo cigu 🚬 kým to skopírujem z Gitu" />}
         </>
       )}
     </ClientOnly>

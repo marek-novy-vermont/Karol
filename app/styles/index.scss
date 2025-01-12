@@ -7,13 +7,13 @@
 @use 'components/editor.scss';
 @use 'components/toast.scss';
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 html,
 body {
   height: 100%;
   width: 100%;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 :root {
@@ -21,7 +21,7 @@ body {
   --primary-color: rgba(61, 116, 35, var(--gradient-opacity));
   --secondary-color: rgba(75, 141, 43, var(--gradient-opacity));
   --accent-color: rgba(107, 182, 68, var(--gradient-opacity));
-  --font-family-base: 'DM Sans', sans-serif;
+  --font-family-base: 'Quicksand', sans-serif;
   // --primary-color: rgba(147, 112, 219, var(--gradient-opacity));
   // --secondary-color: rgba(138, 43, 226, var(--gradient-opacity));
   // --accent-color: rgba(180, 170, 220, var(--gradient-opacity));
