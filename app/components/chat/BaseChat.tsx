@@ -32,6 +32,12 @@ import type { ActionAlert } from '~/types/actions';
 import ChatAlert from './ChatAlert';
 import { LLMManager } from '~/lib/modules/llm/manager';
 
+const GREETINGS = ['Bajajo Bajajo!', 'Jó napod! Počujeme?'];
+
+const getRandomGreeting = () => {
+  return GREETINGS[Math.floor(Math.random() * GREETINGS.length)];
+};
+
 const TEXTAREA_MIN_HEIGHT = 76;
 
 interface BaseChatProps {
@@ -107,6 +113,11 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
     const [recognition, setRecognition] = useState<SpeechRecognition | null>(null);
     const [transcript, setTranscript] = useState('');
     const [isModelLoading, setIsModelLoading] = useState<string | undefined>('all');
+    const [currentGreeting, setCurrentGreeting] = useState('');
+
+    useEffect(() => {
+      setCurrentGreeting(getRandomGreeting());
+    }, []);
 
     const getProviderSettings = useCallback(() => {
       let providerSettings: Record<string, IProviderSetting> | undefined = undefined;
@@ -322,12 +333,16 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
           <div className={classNames(styles.Chat, 'flex flex-col flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
             {!chatStarted && (
               <div id="intro" className="mt-[16vh] max-w-chat mx-auto text-center px-4 lg:px-0">
-                <img src="public/bigfella.svg" alt="Big Fella" className="w-48 h-48 mx-auto animate-fade-in" />
+                <img
+                  src="public/bigfella.svg"
+                  alt="Big Fella"
+                  className="w-32 h-32 lg:w-48 lg:h-48 mx-auto animate-fade-in"
+                />
                 <h1 className="text-3xl lg:text-6xl font-bold text-bolt-elements-textPrimary mb-4 animate-fade-in">
-                  Bajajo Bajajo!
+                  {currentGreeting}
                 </h1>
                 <p className="text-md lg:text-xl mb-2 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
-                  Jó napod! Zapni model, skontroluj nastavenia šefko...
+                  Zapni model, skontroluj nastavenia šefko...
                 </p>
               </div>
             )}
@@ -387,16 +402,16 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         gradientUnits="userSpaceOnUse"
                         gradientTransform="rotate(-45)"
                       >
-                        <stop offset="0%" stopColor="rgba(61, 116, 35, 1)" stopOpacity="0%"></stop>
-                        <stop offset="40%" stopColor="rgba(61, 116, 35, 1)" stopOpacity="80%"></stop>
-                        <stop offset="50%" stopColor="rgba(61, 116, 35, 1)" stopOpacity="80%"></stop>
-                        <stop offset="100%" stopColor="rgba(61, 116, 35, 1)" stopOpacity="0%"></stop>
+                        <stop offset="0%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="0%"></stop>
+                        <stop offset="40%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="80%"></stop>
+                        <stop offset="50%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="80%"></stop>
+                        <stop offset="100%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="0%"></stop>
                       </linearGradient>
                       <linearGradient id="shine-gradient">
-                        <stop offset="0%" stopColor="white" stopOpacity="0%"></stop>
-                        <stop offset="40%" stopColor="#ffffff" stopOpacity="80%"></stop>
-                        <stop offset="50%" stopColor="#ffffff" stopOpacity="80%"></stop>
-                        <stop offset="100%" stopColor="white" stopOpacity="0%"></stop>
+                        <stop offset="0%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="0%"></stop>
+                        <stop offset="40%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="80%"></stop>
+                        <stop offset="50%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="80%"></stop>
+                        <stop offset="100%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="0%"></stop>
                       </linearGradient>
                     </defs>
                     <rect className={classNames(styles.PromptEffectLine)} pathLength="100" strokeLinecap="round"></rect>

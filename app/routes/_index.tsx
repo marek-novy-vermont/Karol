@@ -4,8 +4,6 @@ import { BaseChat } from '~/components/chat/BaseChat';
 import { Chat } from '~/components/chat/Chat.client';
 import { Header } from '~/components/header/Header';
 import BackgroundRays from '~/components/ui/BackgroundRays';
-import { useStore } from '@nanostores/react';
-import { themeStore } from '~/lib/stores/theme';
 import { useEffect, useState } from 'react';
 
 export const meta: MetaFunction = () => {
@@ -18,7 +16,6 @@ export const meta: MetaFunction = () => {
 export const loader = () => json({});
 
 export default function Index() {
-  const theme = useStore(themeStore);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -31,10 +28,13 @@ export default function Index() {
       style={
         mounted
           ? {
-              backgroundImage: `url(${theme === 'dark' ? '/dark.jpg' : '/light.jpg'})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
+              /*
+               * Background image temporarily disabled
+               * backgroundImage: `url(${theme === 'dark' ? '/dark.jpg' : '/light.jpg'})`,
+               * backgroundSize: 'cover',
+               * backgroundPosition: 'center',
+               * backgroundRepeat: 'no-repeat',
+               */
             }
           : undefined
       }
