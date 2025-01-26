@@ -33,7 +33,7 @@ import ChatAlert from './ChatAlert';
 import { LLMManager } from '~/lib/modules/llm/manager';
 import { FloatingLights } from '~/components/ui/FloatingLights';
 
-const GREETINGS = ['Bajajo Bajajo!', 'Jó napod! Počujeme?', 'Chským?', 'Si Zabeu!'];
+const GREETINGS = ['Bajajo Bajajo!', 'Jó napot! Počujeme?', 'Chským?', 'Si Zabeu!'];
 
 const getRandomGreeting = () => {
   return GREETINGS[Math.floor(Math.random() * GREETINGS.length)];
