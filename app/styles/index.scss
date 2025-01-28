@@ -7,17 +7,26 @@
 @use 'components/editor.scss';
 @use 'components/toast.scss';
 
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+AU+SA:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 html,
 body {
   height: 100%;
   width: 100%;
+  font-family: 'Quicksand', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Playwrite AU SA', sans-serif;
 }
 
 :root {
   --gradient-opacity: 0.8;
-  --primary-color: rgba(158, 117, 240, var(--gradient-opacity));
-  --secondary-color: rgba(138, 43, 226, var(--gradient-opacity));
-  --accent-color: rgba(128, 59, 239, var(--gradient-opacity));
+  --primary-color: rgba(61, 116, 35, var(--gradient-opacity));
+  --secondary-color: rgba(75, 141, 43, var(--gradient-opacity));
+  --accent-color: rgba(107, 182, 68, var(--gradient-opacity));
+  --font-family-base: 'Quicksand', sans-serif;
+  --font-family-headings: 'Playwrite AU SA', sans-serif;
   // --primary-color: rgba(147, 112, 219, var(--gradient-opacity));
   // --secondary-color: rgba(138, 43, 226, var(--gradient-opacity));
   // --accent-color: rgba(180, 170, 220, var(--gradient-opacity));

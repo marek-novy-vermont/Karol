@@ -1,11 +1,11 @@
 import React from 'react';
 
 const EXAMPLE_PROMPTS = [
-  { text: 'Build a todo app in React using Tailwind' },
-  { text: 'Build a simple blog using Astro' },
-  { text: 'Create a cookie consent form using Material UI' },
-  { text: 'Make a space invaders game' },
-  { text: 'Make a Tic Tac Toe game in html, css and js only' },
+  { text: 'Vytvor todo aplikáciu v Reacte s použitím Tailwind' },
+  { text: 'Vytvor jednoduchý blog pomocou Astro' },
+  { text: 'Vytvor formulár pre súhlas s cookies pomocou Material UI' },
+  { text: 'Vytvor hru Space Invaders' },
+  { text: 'Vytvor hru Piškvorky len v html, css a js' },
 ];
 
 export function ExamplePrompts(sendMessage?: { (event: React.UIEvent, messageInput?: string): void | undefined }) {

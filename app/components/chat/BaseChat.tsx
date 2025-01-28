@@ -19,7 +19,6 @@ import * as Tooltip from '@radix-ui/react-tooltip';
 import styles from './BaseChat.module.scss';
 import { ExportChatButton } from '~/components/chat/chatExportAndImport/ExportChatButton';
 import { ImportButtons } from '~/components/chat/chatExportAndImport/ImportButtons';
-import { ExamplePrompts } from '~/components/chat/ExamplePrompts';
 import GitCloneButton from './GitCloneButton';
 
 import FilePreview from './FilePreview';
@@ -32,6 +31,13 @@ import StarterTemplates from './StarterTemplates';
 import type { ActionAlert } from '~/types/actions';
 import ChatAlert from './ChatAlert';
 import { LLMManager } from '~/lib/modules/llm/manager';
+import { FloatingLights } from '~/components/ui/FloatingLights';
+
+const GREETINGS = ['Bajajo Bajajo!', 'Jó napot! Počujeme?', 'Chským?', 'Si Zabeu!'];
+
+const getRandomGreeting = () => {
+  return GREETINGS[Math.floor(Math.random() * GREETINGS.length)];
+};
 
 const TEXTAREA_MIN_HEIGHT = 76;
 
@@ -108,6 +114,11 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
     const [recognition, setRecognition] = useState<SpeechRecognition | null>(null);
     const [transcript, setTranscript] = useState('');
     const [isModelLoading, setIsModelLoading] = useState<string | undefined>('all');
+    const [currentGreeting, setCurrentGreeting] = useState('');
+
+    useEffect(() => {
+      setCurrentGreeting(getRandomGreeting());
+    }, []);
 
     const getProviderSettings = useCallback(() => {
       let providerSettings: Record<string, IProviderSetting> | undefined = undefined;
@@ -318,21 +329,30 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
         className={classNames(styles.BaseChat, 'relative flex h-full w-full overflow-hidden')}
         data-chat-visible={showChat}
       >
+        <FloatingLights />
         <ClientOnly>{() => <Menu />}</ClientOnly>
         <div ref={scrollRef} className="flex flex-col lg:flex-row overflow-y-auto w-full h-full">
           <div className={classNames(styles.Chat, 'flex flex-col flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
             {!chatStarted && (
-              <div id="intro" className="mt-[16vh] max-w-chat mx-auto text-center px-4 lg:px-0">
-                <h1 className="text-3xl lg:text-6xl font-bold text-bolt-elements-textPrimary mb-4 animate-fade-in">
-                  Where ideas begin
+              <div
+                id="intro"
+                className="mt-[16vh] max-w-chat mx-auto text-center px-4 lg:px-0 flex flex-col items-center"
+              >
+                <img
+                  src="/bigfella.svg"
+                  alt="Big Fella"
+                  className="w-36 h-36 lg:w-56 lg:h-56 mx-auto animate-fade-in mb-4"
+                />
+                <h1 className="text-3xl lg:text-6xl font-bold text-bolt-elements-textPrimary mb-10 animate-fade-in whitespace-nowrap text-center inline-block">
+                  {currentGreeting}
                 </h1>
-                <p className="text-md lg:text-xl mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
-                  Bring ideas to life in seconds or get help on existing projects.
+                <p className="text-md lg:text-xl mb-2 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
+                  ... Zapnutý model? ... LLM Engine? ... API klúč?
                 </p>
               </div>
             )}
             <div
-              className={classNames('pt-6 px-2 sm:px-6', {
+              className={classNames('pt-1 px-2 sm:px-6', {
                 'h-full flex flex-col': chatStarted,
               })}
             >
@@ -387,16 +407,16 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         gradientUnits="userSpaceOnUse"
                         gradientTransform="rotate(-45)"
                       >
-                        <stop offset="0%" stopColor="#b44aff" stopOpacity="0%"></stop>
-                        <stop offset="40%" stopColor="#b44aff" stopOpacity="80%"></stop>
-                        <stop offset="50%" stopColor="#b44aff" stopOpacity="80%"></stop>
-                        <stop offset="100%" stopColor="#b44aff" stopOpacity="0%"></stop>
+                        <stop offset="0%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="0%"></stop>
+                        <stop offset="40%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="80%"></stop>
+                        <stop offset="50%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="80%"></stop>
+                        <stop offset="100%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="0%"></stop>
                       </linearGradient>
                       <linearGradient id="shine-gradient">
-                        <stop offset="0%" stopColor="white" stopOpacity="0%"></stop>
-                        <stop offset="40%" stopColor="#ffffff" stopOpacity="80%"></stop>
-                        <stop offset="50%" stopColor="#ffffff" stopOpacity="80%"></stop>
-                        <stop offset="100%" stopColor="white" stopOpacity="0%"></stop>
+                        <stop offset="0%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="0%"></stop>
+                        <stop offset="40%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="80%"></stop>
+                        <stop offset="50%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="80%"></stop>
+                        <stop offset="100%" stopColor="rgba(255, 255, 255, 1)" stopOpacity="0%"></stop>
                       </linearGradient>
                     </defs>
                     <rect className={classNames(styles.PromptEffectLine)} pathLength="100" strokeLinecap="round"></rect>
@@ -520,7 +540,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         minHeight: TEXTAREA_MIN_HEIGHT,
                         maxHeight: TEXTAREA_MAX_HEIGHT,
                       }}
-                      placeholder="How can Bolt help you today?"
+                      placeholder="Sem napíš čo má Karči zrobiť..."
                       translate="no"
                     />
                     <ClientOnly>
@@ -587,9 +607,10 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                       </div>
                       {input.length > 3 ? (
                         <div className="text-xs text-bolt-elements-textTertiary">
-                          Use <kbd className="kdb px-1.5 py-0.5 rounded bg-bolt-elements-background-depth-2">Shift</kbd>{' '}
-                          + <kbd className="kdb px-1.5 py-0.5 rounded bg-bolt-elements-background-depth-2">Return</kbd>{' '}
-                          a new line
+                          Použi{' '}
+                          <kbd className="kdb px-1.5 py-0.5 rounded bg-bolt-elements-background-depth-2">Shift</kbd> +{' '}
+                          <kbd className="kdb px-1.5 py-0.5 rounded bg-bolt-elements-background-depth-2">Return</kbd>{' '}
+                          pre nový riadok
                         </div>
                       ) : null}
                     </div>
@@ -599,20 +620,12 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
             </div>
             <div className="flex flex-col justify-center gap-5">
               {!chatStarted && (
-                <div className="flex justify-center gap-2">
+                <div className="flex justify-center gap-2 mb-14">
                   {ImportButtons(importChat)}
                   <GitCloneButton importChat={importChat} />
                 </div>
               )}
-              {!chatStarted &&
-                ExamplePrompts((event, messageInput) => {
-                  if (isStreaming) {
-                    handleStop?.();
-                    return;
-                  }
 
-                  handleSendMessage?.(event, messageInput);
-                })}
               {!chatStarted && <StarterTemplates />}
             </div>
           </div>

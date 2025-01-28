@@ -58,7 +58,7 @@ export const Menu = () => {
   const { duplicateCurrentChat, exportChat } = useChatHistory();
   const menuRef = useRef<HTMLDivElement>(null);
   const [list, setList] = useState<ChatHistoryItem[]>([]);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [dialogContent, setDialogContent] = useState<DialogContent>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
@@ -151,26 +151,26 @@ export const Menu = () => {
         <div className="p-4 select-none">
           <a
             href="/"
-            className="flex gap-2 items-center bg-bolt-elements-sidebar-buttonBackgroundDefault text-bolt-elements-sidebar-buttonText hover:bg-bolt-elements-sidebar-buttonBackgroundHover rounded-md p-2 transition-theme mb-4"
+            className="flex gap-2 items-center bg-[#09B6A2] text-white hover:bg-[#08a492] rounded-md p-2 transition-theme mb-4"
           >
             <span className="inline-block i-bolt:chat scale-110" />
-            Start new chat
+            Začať nový chat
           </a>
           <div className="relative w-full">
             <input
               className="w-full bg-white dark:bg-bolt-elements-background-depth-4 relative px-2 py-1.5 rounded-md focus:outline-none placeholder-bolt-elements-textTertiary text-bolt-elements-textPrimary dark:text-bolt-elements-textPrimary border border-bolt-elements-borderColor"
               type="search"
-              placeholder="Search"
+              placeholder="Hľadať"
               onChange={handleSearchChange}
-              aria-label="Search chats"
+              aria-label="Hľadať chaty"
             />
           </div>
         </div>
-        <div className="text-bolt-elements-textPrimary font-medium pl-6 pr-5 my-2">Your Chats</div>
+        <div className="text-bolt-elements-textPrimary font-medium pl-6 pr-5 my-2">Vaše Chaty</div>
         <div className="flex-1 overflow-auto pl-4 pr-5 pb-5">
           {filteredList.length === 0 && (
             <div className="pl-2 text-bolt-elements-textTertiary">
-              {list.length === 0 ? 'No previous conversations' : 'No matches found'}
+              {list.length === 0 ? 'Žiadne predchádzajúce konverzácie' : 'Nenašli sa žiadne zhody'}
             </div>
           )}
           <DialogRoot open={dialogContent !== null}>
@@ -193,18 +193,18 @@ export const Menu = () => {
             <Dialog onBackdrop={closeDialog} onClose={closeDialog}>
               {dialogContent?.type === 'delete' && (
                 <>
-                  <DialogTitle>Delete Chat?</DialogTitle>
+                  <DialogTitle>Vymazať Chat?</DialogTitle>
                   <DialogDescription asChild>
                     <div>
                       <p>
-                        You are about to delete <strong>{dialogContent.item.description}</strong>.
+                        Chystáte sa vymazať <strong>{dialogContent.item.description}</strong>.
                       </p>
-                      <p className="mt-1">Are you sure you want to delete this chat?</p>
+                      <p className="mt-1">Ste si istý, že chcete vymazať tento chat?</p>
                     </div>
                   </DialogDescription>
                   <div className="px-5 pb-4 bg-bolt-elements-background-depth-2 flex gap-2 justify-end">
                     <DialogButton type="secondary" onClick={closeDialog}>
-                      Cancel
+                      Zrušiť
                     </DialogButton>
                     <DialogButton
                       type="danger"
@@ -213,7 +213,7 @@ export const Menu = () => {
                         closeDialog();
                       }}
                     >
-                      Delete
+                      Vymazať
                     </DialogButton>
                   </div>
                 </>

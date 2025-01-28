@@ -97,12 +97,12 @@ export function useEditChatDescription({
     const characterValid = /^[a-zA-Z0-9\s\-_.,!?()[\]{}'"]+$/.test(trimmedDesc);
 
     if (!lengthValid) {
-      toast.error('Description must be between 1 and 100 characters.');
+      toast.error('Popis musí mať 1 až 100 znakov.');
       return false;
     }
 
     if (!characterValid) {
-      toast.error('Description can only contain letters, numbers, spaces, and basic punctuation.');
+      toast.error('Popis môže obsahovať len písmená, čísla, medzery a základnú interpunkciu.');
       return false;
     }
 
@@ -119,12 +119,12 @@ export function useEditChatDescription({
 
       try {
         if (!db) {
-          toast.error('Chat persistence is not available');
+          toast.error('Chat nie je dostupný');
           return;
         }
 
         if (!chatId) {
-          toast.error('Chat Id is not available');
+          toast.error('ID chatu nie je dostupné');
           return;
         }
 
@@ -134,9 +134,9 @@ export function useEditChatDescription({
           descriptionStore.set(currentDescription);
         }
 
-        toast.success('Chat description updated successfully');
+        toast.success('Popis chatu bol úspešne aktualizovaný');
       } catch (error) {
-        toast.error('Failed to update chat description: ' + (error as Error).message);
+        toast.error('Nepodarilo sa aktualizovať popis chatu: ' + (error as Error).message);
       }
 
       toggleEditMode();

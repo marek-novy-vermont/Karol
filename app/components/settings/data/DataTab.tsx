@@ -233,7 +233,9 @@ export default function DataTab() {
     event.target.value = '';
   };
 
-  const processChatData = (data: any): Array<{
+  const processChatData = (
+    data: any,
+  ): Array<{
     id: string;
     messages: Message[];
     description: string;
@@ -242,23 +244,25 @@ export default function DataTab() {
     // Handle Bolt standard format (single chat)
     if (data.messages && Array.isArray(data.messages)) {
       const chatId = crypto.randomUUID();
-      return [{
-        id: chatId,
-        messages: data.messages,
-        description: data.description || 'Imported Chat',
-        urlId: chatId
-      }];
+      return [
+        {
+          id: chatId,
+          messages: data.messages,
+          description: data.description || 'Imported Chat',
+          urlId: chatId,
+        },
+      ];
     }
 
-      // Handle Bolt export format (multiple chats)
-      if (data.chats && Array.isArray(data.chats)) {
-        return data.chats.map((chat: { id?: string; messages: Message[]; description?: string; urlId?: string; }) => ({
-          id: chat.id || crypto.randomUUID(),
-          messages: chat.messages,
-          description: chat.description || 'Imported Chat',
-          urlId: chat.urlId,
-        }));
-      }
+    // Handle Bolt export format (multiple chats)
+    if (data.chats && Array.isArray(data.chats)) {
+      return data.chats.map((chat: { id?: string; messages: Message[]; description?: string; urlId?: string }) => ({
+        id: chat.id || crypto.randomUUID(),
+        messages: chat.messages,
+        description: chat.description || 'Imported Chat',
+        urlId: chat.urlId,
+      }));
+    }
 
     console.error('No matching format found for:', data);
     throw new Error('Unsupported chat format');
@@ -296,6 +300,7 @@ export default function DataTab() {
         } else {
           toast.error('Failed to import chats');
         }
+
         console.error(error);
       }
     };
@@ -339,38 +344,38 @@ export default function DataTab() {
             </div>
 
             <div>
-              <h4 className="text-bolt-elements-textPrimary mb-2">Settings Backup</h4>
+              <h4 className="text-bolt-elements-textPrimary mb-2">Záloha nastavení</h4>
               <p className="text-sm text-bolt-elements-textSecondary mb-4">
-                Export your settings to a JSON file or import settings from a previously exported file.
+                Exportujte svoje nastavenia do JSON súboru alebo importujte nastavenia z predtým exportovaného súboru.
               </p>
               <div className="flex gap-4">
                 <button
                   onClick={handleExportSettings}
                   className="px-4 py-2 bg-bolt-elements-button-primary-background hover:bg-bolt-elements-button-primary-backgroundHover text-bolt-elements-textPrimary rounded-lg transition-colors"
                 >
-                  Export Settings
+                  Exportovať nastavenia
                 </button>
                 <label className="px-4 py-2 bg-bolt-elements-button-primary-background hover:bg-bolt-elements-button-primary-backgroundHover text-bolt-elements-textPrimary rounded-lg transition-colors cursor-pointer">
-                  Import Settings
+                  Importovať nastavenia
                   <input type="file" accept=".json" onChange={handleImportSettings} className="hidden" />
                 </label>
               </div>
             </div>
 
             <div>
-              <h4 className="text-bolt-elements-textPrimary mb-2">API Keys Management</h4>
+              <h4 className="text-bolt-elements-textPrimary mb-2">Správa API kľúčov</h4>
               <p className="text-sm text-bolt-elements-textSecondary mb-4">
-                Import API keys from a JSON file or download a template to fill in your keys.
+                Importujte API kľúče z JSON súboru alebo si stiahnite šablónu pre vyplnenie vašich kľúčov.
               </p>
               <div className="flex gap-4">
                 <button
                   onClick={handleExportApiKeyTemplate}
                   className="px-4 py-2 bg-bolt-elements-button-primary-background hover:bg-bolt-elements-button-primary-backgroundHover text-bolt-elements-textPrimary rounded-lg transition-colors"
                 >
-                  Download Template
+                  Stiahnuť šablónu
                 </button>
                 <label className="px-4 py-2 bg-bolt-elements-button-primary-background hover:bg-bolt-elements-button-primary-backgroundHover text-bolt-elements-textPrimary rounded-lg transition-colors cursor-pointer">
-                  Import API Keys
+                  Importovať API kľúče
                   <input type="file" accept=".json" onChange={handleImportApiKeys} className="hidden" />
                 </label>
               </div>

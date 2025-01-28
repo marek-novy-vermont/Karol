@@ -1,0 +1,44 @@
+@use "sass:list";
+
+.lightsContainer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.light {
+  position: absolute;
+  height: 0px;
+  width: 0px;
+  opacity: .75;
+  background-color: var(--bolt-elements-textPrimary);
+  box-shadow: var(--bolt-elements-textPrimary) 0px 0px 20px 2px;
+  opacity: 0;
+  top: 100vh;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin: auto;
+}
+
+@keyframes floatUp {
+  0% { top: 100vh; opacity: 0; }
+  25% { opacity: 1; }
+  50% { top: 0vh; opacity: .8; }
+  75% { opacity: 1; }
+  100% { top: -100vh; opacity: 0; }
+}
+
+$animation-durations: (12s, 21s, 7.5s, 13.5s, 24s, 9s, 15.9s, 14.1s, 12.3s);
+$scales: (1.0, 1.6, 0.5, 1.2, 2.2, 0.8, 3.2, 1.7, 0.9);
+$left-positions: (0%, 15%, -15%, -34%, -57%, -81%, 37%, 62%, 85%);
+
+@for $i from 1 through 9 {
+  .x#{$i} {
+    animation: floatUp list.nth($animation-durations, $i) infinite linear;
+    transform: scale(list.nth($scales, $i));
+    left: list.nth($left-positions, $i);
+  }
+} 
